@@ -1,14 +1,37 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+#[derive(Serialize, Deserialize)]
+pub struct Stats {
+    pub pps: f64,
+    pub apm: f64,
+    pub vs: f64,
+    pub success: bool
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[derive(Serialize, Deserialize)]
+pub struct Average {
+    pub username: String,
+    pub pps: f64,
+    pub apm: f64,
+    pub vs: f64,
+    pub score: u32
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+
+#[derive(Serialize, Deserialize)]
+pub struct Round {
+    pub left: Stats,
+    pub right: Stats,
+    pub time: String
+}
+
+#[derive(Serialize, Deserialize)]
+
+pub struct Averages {
+    pub left: Average,
+    pub right: Average
+}
+// the output to our `create_user` handler
+#[derive(Serialize, Deserialize)]
+pub struct LeagueRecord {
+    pub averages: Averages,
+    pub rounds: Vec<Round>
 }
