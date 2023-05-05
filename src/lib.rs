@@ -1,3 +1,4 @@
+use serde::{Serialize, Deserialize};
 #[derive(Serialize, Deserialize)]
 pub struct Stats {
     pub pps: f64,
